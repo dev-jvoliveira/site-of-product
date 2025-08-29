@@ -992,16 +992,33 @@
 
       // ================= Admin Actions (Firestore) =================
       async function addProduct(data) {
-        /* ... */
+        await addDoc(productsCol, {
+          nome: data.nome,
+          cat: data.cat,
+          preco: Number(data.preco),
+          rating: Number(data.rating) || 4.5,
+          img: data.img || "IMG",
+          active: true,
+          createdAt: serverTimestamp(),
+        });
       }
+
       async function markSold(id) {
-        /* ... */
+        await updateDoc(doc(db, "products", id), {
+          active: false,
+          updatedAt: serverTimestamp(),
+        });
       }
+
       async function restoreProduct(id) {
-        /* ... */
+        await updateDoc(doc(db, "products", id), {
+          active: true,
+          updatedAt: serverTimestamp(),
+        });
       }
+
       async function removeProduct(id) {
-        /* ... */
+        await deleteDoc(doc(db, "products", id));
       }
 
       // === Admin: envio do formulário "Add product" ===
