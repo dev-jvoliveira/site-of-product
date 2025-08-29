@@ -16,30 +16,27 @@
         --card: #111218;
         --text: #e6e7eb;
         --muted: #a7abb4;
-        /* EASYSHOP */
-        --brand: #f00050; /* magenta do logo */
-        --brand-2: #ff4d8a; /* magenta mais claro para gradientes */
+        --brand: #f00050;
+        --brand-2: #ff4d8a;
         --border: #1f2230;
-        --ring: rgba(240, 0, 80, 0.35); /* foco com magenta */
+        --ring: rgba(240, 0, 80, 0.35);
         --ok: #22c55e;
         --warn: #f59e0b;
-        --hero-bg: #000; /* hero no tema escuro */
+        --hero-bg: #000;
       }
       :root.light {
         --bg: #f7f7fb;
         --card: #ffffff;
         --text: #1f2937;
         --muted: #6b7280;
-        /* EASYSHOP */
         --brand: #f00050;
         --brand-2: #ff7aa7;
         --border: #e5e7eb;
         --ring: rgba(240, 0, 80, 0.25);
         --ok: #16a34a;
         --warn: #d97706;
-        --hero-bg: #ffffff; /* hero no tema claro */
+        --hero-bg: #ffffff;
       }
-
       * {
         box-sizing: border-box;
       }
@@ -72,8 +69,6 @@
         width: min(1100px, 92%);
         margin: 0 auto;
       }
-
-      /* Header */
       header {
         position: sticky;
         top: 0;
@@ -95,8 +90,6 @@
         font-weight: 700;
         letter-spacing: 0.2px;
       }
-
-      /* LOGO NO HEADER */
       .logo-badge {
         width: auto;
         height: 36px;
@@ -111,7 +104,6 @@
         width: auto;
         display: block;
       }
-
       .nav-links {
         display: flex;
         gap: 14px;
@@ -126,7 +118,6 @@
         color: var(--text);
         background: color-mix(in srgb, var(--card) 90%, transparent);
       }
-
       .search {
         flex: 1;
         display: flex;
@@ -147,7 +138,6 @@
         box-shadow: 0 0 0 6px var(--ring);
         border-color: color-mix(in srgb, var(--brand) 40%, var(--border));
       }
-
       .actions {
         display: flex;
         align-items: center;
@@ -170,8 +160,6 @@
         color: #fff;
         font-weight: 600;
       }
-
-      /* Hero */
       .hero {
         position: relative;
         overflow: hidden;
@@ -225,8 +213,6 @@
         display: block;
         object-fit: contain;
       }
-
-      /* Filters */
       .filters {
         display: flex;
         gap: 10px;
@@ -249,8 +235,6 @@
       .range input {
         accent-color: var(--brand);
       }
-
-      /* Grid */
       .grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -308,8 +292,6 @@
         align-items: center;
         gap: 10px;
       }
-
-      /* Footer */
       footer {
         border-top: 1px solid var(--border);
         margin-top: 48px;
@@ -342,8 +324,6 @@
         justify-content: space-between;
         align-items: center;
       }
-
-      /* Cart Drawer */
       .drawer {
         position: fixed;
         inset: 0 0 0 auto;
@@ -390,8 +370,6 @@
         display: grid;
         gap: 10px;
       }
-
-      /* Badges / buttons */
       .badge {
         display: inline-flex;
         align-items: center;
@@ -408,8 +386,6 @@
         border-radius: 999px;
         background: var(--ok);
       }
-
-      /* WHATSAPP FLOAT (com imagem + texto) */
       .whatsapp-float {
         position: fixed;
         right: 18px;
@@ -442,8 +418,6 @@
         line-height: 1;
         white-space: nowrap;
       }
-
-      /* empurra quando o carrinho abre (desktop) */
       .drawer.open + .whatsapp-float {
         right: 410px;
       }
@@ -461,7 +435,52 @@
         }
       }
 
-      /* Responsive */
+      /* ADMIN */
+      #admin[hidden] {
+        display: none;
+      }
+      .admin-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 16px;
+      }
+      .admin-card {
+        grid-column: span 6;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 14px;
+      }
+      .admin-form {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .admin-form .field {
+        grid-column: span 6;
+        display: grid;
+        gap: 6px;
+      }
+      .admin-form input,
+      .admin-form select {
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .admin-bar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
       @media (max-width: 980px) {
         .hero-inner {
           grid-template-columns: 1fr;
@@ -471,6 +490,9 @@
         }
         .footer-grid {
           grid-template-columns: 1fr 1fr;
+        }
+        .admin-card {
+          grid-column: span 12;
         }
       }
       @media (max-width: 640px) {
@@ -489,26 +511,28 @@
         .drawer {
           width: 100%;
         }
+        .admin-form .field {
+          grid-column: span 12;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <div class="container nav">
         <div class="logo" aria-label="EASYSHOP">
           <div class="logo-badge" aria-hidden="true">
             <img src="images/LOGO-EASYSHOP (PNG).png" alt="EASYSHOP logo" />
           </div>
+          <span>EASYSHOP</span>
         </div>
-
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#produtos">Products</a>
           <a href="#novidades">News</a>
           <a href="#sobre">About us</a>
           <a href="#contato">Contact us</a>
+          <a href="#admin" id="adminLink">Admin</a>
         </nav>
-
         <div class="search" role="search">
           <input
             id="q"
@@ -517,7 +541,6 @@
             aria-label="Search products"
           />
         </div>
-
         <div class="actions">
           <button class="btn" id="themeBtn" aria-label="Toggle theme">
             🌓
@@ -526,18 +549,27 @@
             🛒
             <span id="cartCount" class="chip" style="margin-left: 6px">0</span>
           </button>
+          <button class="btn" id="loginBtn" aria-label="Admin login">
+            Login
+          </button>
+          <button
+            class="btn"
+            id="logoutBtn"
+            aria-label="Admin logout"
+            style="display: none"
+          >
+            Logout
+          </button>
           <a class="btn primary" href="#produtos">Shop</a>
         </div>
       </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-card">
           <div class="badge" style="margin-bottom: 8px">
-            <span class="dot"></span> Business hours: Monday to Friday, 8 AM to
-            5 PM (Brasília Time / GMT-3)
+            <span class="dot"></span> Business hours: Mon–Fri, 8 AM–5 PM (GMT-3)
           </div>
           <h1>
             Discover products with
@@ -559,7 +591,6 @@
       </div>
     </section>
 
-    <!-- Products + Filters -->
     <main class="container" id="produtos" style="padding: 22px 0 0">
       <div class="filters" aria-label="Product filters">
         <select id="cat" class="select" aria-label="Category">
@@ -575,7 +606,6 @@
         </div>
         <span class="chip" id="resultCount">0 results</span>
       </div>
-
       <section
         class="grid"
         id="grid"
@@ -584,7 +614,96 @@
       ></section>
     </main>
 
-    <!-- Footer -->
+    <!-- Admin -->
+    <section class="container" id="admin" hidden style="padding: 22px 0">
+      <h2 style="margin: 0 0 12px">Admin</h2>
+      <div id="adminLoggedOut" class="admin-card">
+        <strong>Sign in</strong>
+        <div class="admin-form" style="margin-top: 10px">
+          <div class="field" style="grid-column: span 6">
+            <label for="admEmail" class="meta">Email</label>
+            <input id="admEmail" type="email" placeholder="admin@email.com" />
+          </div>
+          <div class="field" style="grid-column: span 6">
+            <label for="admPass" class="meta">Password</label>
+            <input id="admPass" type="password" placeholder="••••••••" />
+          </div>
+          <div class="field" style="grid-column: span 12">
+            <button class="btn primary" id="doLogin">Sign in</button>
+          </div>
+          <div class="note" style="grid-column: span 12">
+            Only admins can add/remove/mark products as sold.
+          </div>
+        </div>
+      </div>
+
+      <div id="adminLoggedIn" style="display: none">
+        <div class="admin-card">
+          <strong>Add product</strong>
+          <form id="adminAddForm" class="admin-form" style="margin-top: 10px">
+            <div class="field">
+              <label class="meta" for="pname">Name</label
+              ><input
+                id="pname"
+                required
+                placeholder="Ex: Wireless Headphones"
+              />
+            </div>
+            <div class="field">
+              <label class="meta" for="pcat">Category</label>
+              <select id="pcat" required>
+                <option>Electronics</option>
+                <option>Home & Kitchen</option>
+                <option>Sports</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="meta" for="pprice">Price (USD)</label
+              ><input
+                id="pprice"
+                type="number"
+                step="0.01"
+                min="0"
+                required
+                placeholder="199.99"
+              />
+            </div>
+            <div class="field">
+              <label class="meta" for="prating">Rating (1-5)</label
+              ><input
+                id="prating"
+                type="number"
+                step="0.1"
+                min="1"
+                max="5"
+                placeholder="4.7"
+              />
+            </div>
+            <div class="field" style="grid-column: span 12">
+              <label class="meta" for="pimg">Image label (optional)</label
+              ><input
+                id="pimg"
+                placeholder="e.g. HEADPHONES or image URL soon"
+              />
+            </div>
+            <div class="field" style="grid-column: span 12">
+              <button class="btn primary" type="submit">Add</button>
+            </div>
+          </form>
+          <div class="note">
+            Tip: Images are placeholders (text). Later we can store URLs.
+          </div>
+        </div>
+
+        <div class="admin-bar">
+          <button class="btn" id="restoreAll">Restore all</button>
+          <span class="chip">Sold out: <strong id="soldCount">0</strong></span>
+        </div>
+
+        <section class="admin-grid" id="adminList" aria-live="polite"></section>
+      </div>
+    </section>
+
     <footer id="contato">
       <div class="container footer-grid foot">
         <div>
@@ -634,7 +753,6 @@
       </div>
     </footer>
 
-    <!-- Cart Drawer -->
     <aside
       class="drawer"
       id="drawer"
@@ -642,8 +760,8 @@
       aria-label="Shopping cart"
     >
       <div class="drawer-header">
-        <strong>Your cart</strong>
-        <button class="btn" id="closeDrawer" aria-label="Close">✕</button>
+        <strong>Your cart</strong
+        ><button class="btn" id="closeDrawer" aria-label="Close">✕</button>
       </div>
       <div class="drawer-list" id="cartList"></div>
       <div class="drawer-footer">
@@ -654,7 +772,6 @@
       </div>
     </aside>
 
-    <!-- WhatsApp Floating Button -->
     <a
       class="whatsapp-float"
       href="https://wa.me/5519991578587?text=Hello%20EASYSHOP%2C%20I%20came%20from%20the%20website."
@@ -663,97 +780,51 @@
       aria-label="Contact us on WhatsApp"
       title="WhatsApp"
     >
-      <img src="images/whatsapp (1).png" alt="" />
-      <span class="wa-label">Contact us!</span>
+      <img src="images/whatsapp (1).png" alt="" /><span class="wa-label"
+        >Contact us!</span
+      >
     </a>
 
-    <script>
-      // --- Example data (translated categories) ---
-      const produtos = [
-        {
-          id: 1,
-          nome: "Wireless Headphones ZX-100",
-          cat: "Electronics",
-          preco: 399,
-          rating: 4.6,
-          img: "HEADPHONES",
-        },
-        {
-          id: 2,
-          nome: "Stainless Coffee Maker 700",
-          cat: "Home & Kitchen",
-          preco: 489,
-          rating: 4.8,
-          img: "COFFEE MAKER",
-        },
-        {
-          id: 3,
-          nome: "Thermal Bottle Pro",
-          cat: "Sports",
-          preco: 159,
-          rating: 4.4,
-          img: "BOTTLE",
-        },
-        {
-          id: 4,
-          nome: "Touch LED Lamp",
-          cat: "Home & Kitchen",
-          preco: 229,
-          rating: 4.2,
-          img: "LAMP",
-        },
-        {
-          id: 5,
-          nome: "Smartwatch S9",
-          cat: "Electronics",
-          preco: 899,
-          rating: 4.7,
-          img: "WATCH",
-        },
-        {
-          id: 6,
-          nome: "Active Backpack 28L",
-          cat: "Sports",
-          preco: 289,
-          rating: 4.3,
-          img: "BACKPACK",
-        },
-        {
-          id: 7,
-          nome: "Soundbar 120W",
-          cat: "Electronics",
-          preco: 1199,
-          rating: 4.5,
-          img: "SOUNDBAR",
-        },
-        {
-          id: 8,
-          nome: "3-in-1 Hand Blender",
-          cat: "Home & Kitchen",
-          preco: 349,
-          rating: 4.1,
-          img: "BLENDER",
-        },
-        {
-          id: 9,
-          nome: "Action Camera 4K",
-          cat: "Electronics",
-          preco: 1399,
-          rating: 4.6,
-          img: "CAM 4K",
-        },
-      ];
+    <script type="module">
+      // ================= Firebase (replace with your config!) =================
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signInWithEmailAndPassword,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+      import {
+        getFirestore,
+        collection,
+        onSnapshot,
+        addDoc,
+        updateDoc,
+        deleteDoc,
+        doc,
+        serverTimestamp,
+        query,
+        orderBy,
+      } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
-      // --- State ---
+      const firebaseConfig = {
+        apiKey: "AIzaSyDkhNlOQliVO_iuhiH4qsNvaqHP0Umrv1I",
+        authDomain: "easyshop-products.firebaseapp.com",
+        projectId: "easyshop-products",
+      };
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+
+      // ================= State & Utils =================
       const state = {
         q: "",
         cat: "",
         maxPrice: 2000,
         cart: [],
         theme: localStorage.getItem("theme") || "dark",
+        products: [], // Firestore products
       };
-
-      // --- Utils: USD currency ---
       const fmt = (v) =>
         v.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
@@ -764,15 +835,16 @@
         localStorage.setItem("theme", state.theme);
       }
 
-      // --- Render products ---
+      // ================= Catalog Rendering =================
       function renderProdutos() {
         const grid = document.getElementById("grid");
         grid.setAttribute("aria-busy", "true");
-        const filtered = produtos.filter((p) => {
-          const matchQ =
-            state.q === "" || p.nome.toLowerCase().includes(state.q);
+        const list = (state.products || []).filter((p) => p.active !== false);
+        const filtered = list.filter((p) => {
+          const name = (p.nome || "").toLowerCase();
+          const matchQ = state.q === "" || name.includes(state.q);
           const matchCat = !state.cat || p.cat === state.cat;
-          const matchPrice = p.preco <= state.maxPrice;
+          const matchPrice = Number(p.preco || 0) <= state.maxPrice;
           return matchQ && matchCat && matchPrice;
         });
         document.getElementById("resultCount").textContent = `${
@@ -782,24 +854,25 @@
           .map(
             (p) => `
           <article class="card" data-id="${p.id}">
-            <div class="thumb">${p.img}</div>
+            <div class="thumb">${p.img || "IMG"}</div>
             <div class="body">
-              <div class="title">${p.nome}</div>
+              <div class="title">${p.nome || ""}</div>
               <div class="row"><span class="meta">${
-                p.cat
-              }</span><span class="chip">★ ${p.rating.toFixed(1)}</span></div>
+                p.cat || ""
+              }</span><span class="chip">★ ${Number(p.rating || 4.5).toFixed(
+              1
+            )}</span></div>
               <div class="row"><div class="price">${fmt(
-                p.preco
+                Number(p.preco || 0)
               )}</div><button class="btn" data-add="${p.id}">Add</button></div>
             </div>
-          </article>
-        `
+          </article>`
           )
           .join("");
         grid.setAttribute("aria-busy", "false");
       }
 
-      // --- Cart ---
+      // ================= Cart =================
       function renderCart() {
         const list = document.getElementById("cartList");
         if (state.cart.length === 0) {
@@ -812,41 +885,38 @@
         let subtotal = 0;
         list.innerHTML = state.cart
           .map((item) => {
-            const p = produtos.find((x) => x.id === item.id);
-            const total = p.preco * item.qty;
+            const p = state.products.find((x) => x.id === item.id);
+            if (!p) return "";
+            const price = Number(p.preco || 0);
+            const total = price * item.qty;
             subtotal += total;
-            return `
-            <div class="drawer-item">
-              <div style="width:56px;height:42px;border:1px solid var(--border);border-radius:8px;display:grid;place-items:center;color:#c2e9ff;background:linear-gradient(135deg,#0a0f1f,#101631)">${
-                p.img
-              }</div>
-              <div>
-                <div style="font-weight:600">${p.nome}</div>
-                <div class="meta">${fmt(p.preco)} · Qty:
-                  <button class="btn" data-dec="${
-                    p.id
-                  }" aria-label="Decrease">−</button> ${item.qty}
-                  <button class="btn" data-inc="${
-                    p.id
-                  }" aria-label="Increase">+</button>
-                </div>
-              </div>
-              <strong>${fmt(total)}</strong>
-            </div>`;
+            return `<div class="drawer-item">
+            <div style="width:56px;height:42px;border:1px solid var(--border);border-radius:8px;display:grid;place-items:center;color:#c2e9ff;background:linear-gradient(135deg,#0a0f1f,#101631)">${
+              p.img || "IMG"
+            }</div>
+            <div><div style="font-weight:600">${p.nome || ""}</div>
+            <div class="meta">${fmt(
+              price
+            )} · Qty: <button class="btn" data-dec="${
+              p.id
+            }" aria-label="Decrease">−</button> ${
+              item.qty
+            } <button class="btn" data-inc="${
+              p.id
+            }" aria-label="Increase">+</button></div></div>
+            <strong>${fmt(total)}</strong></div>`;
           })
           .join("");
         document.getElementById("subtotal").textContent = fmt(subtotal);
         const count = state.cart.reduce((a, b) => a + b.qty, 0);
         document.getElementById("cartCount").textContent = String(count);
       }
-
       function addToCart(id) {
         const item = state.cart.find((i) => i.id === id);
         if (item) item.qty += 1;
         else state.cart.push({ id, qty: 1 });
         renderCart();
       }
-
       function changeQty(id, delta) {
         const idx = state.cart.findIndex((i) => i.id === id);
         if (idx === -1) return;
@@ -855,7 +925,7 @@
         renderCart();
       }
 
-      // --- Drawer ---
+      // ================= Drawer =================
       function openDrawer() {
         const d = document.getElementById("drawer");
         d.classList.add("open");
@@ -867,14 +937,138 @@
         d.setAttribute("aria-hidden", "true");
       }
 
-      // --- Events ---
+      // ================= Admin UI =================
+      function saveSoldCount() {
+        const sold = state.products.filter((p) => p.active === false).length;
+        const el = document.getElementById("soldCount");
+        if (el) el.textContent = sold;
+      }
+      function renderAdmin() {
+        saveSoldCount();
+        const wrap = document.getElementById("adminList");
+        if (!wrap) return;
+        wrap.innerHTML = (state.products || [])
+          .map((p) => {
+            const isSold = p.active === false;
+            return `<article class="admin-card">
+            <div class="title">${p.nome || ""}</div>
+            <div class="row"><span class="meta">${p.cat || ""} · ${fmt(
+              Number(p.preco || 0)
+            )}</span><span class="chip">${
+              isSold ? "SOLD OUT" : "ACTIVE"
+            }</span></div>
+            <div class="row" style="margin-top:6px;">
+              <button class="btn ${
+                isSold ? "primary" : ""
+              }" data-toggle-sold="${p.id}">${
+              isSold ? "Restore" : "Mark as sold"
+            }</button>
+              <button class="btn" data-delete="${p.id}">Delete</button>
+            </div>
+          </article>`;
+          })
+          .join("");
+      }
+      function route() {
+        const isAdmin = location.hash === "#admin";
+        const adminSec = document.getElementById("admin");
+        const hero = document.querySelector(".hero");
+        const main = document.querySelector("main.container");
+        adminSec.hidden = !isAdmin;
+        if (hero) hero.style.display = isAdmin ? "none" : "";
+        if (main) main.style.display = isAdmin ? "none" : "";
+        if (isAdmin) renderAdmin();
+      }
+      window.addEventListener("hashchange", route);
+
+      // ================= Firestore Live Query =================
+      const productsCol = collection(db, "products");
+      const q = query(productsCol, orderBy("createdAt", "desc"));
+      onSnapshot(q, (snap) => {
+        state.products = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+        renderProdutos();
+        if (location.hash === "#admin") renderAdmin();
+      });
+
+      // ================= Admin Actions (Firestore) =================
+      async function addProduct(data) {
+        await addDoc(productsCol, {
+          nome: data.nome,
+          cat: data.cat,
+          preco: Number(data.preco),
+          rating: Number(data.rating) || 4.5,
+          img: data.img || "IMG",
+          active: true,
+          createdAt: serverTimestamp(),
+        });
+      }
+      async function markSold(id) {
+        await updateDoc(doc(db, "products", id), {
+          active: false,
+          updatedAt: serverTimestamp(),
+        });
+      }
+      async function restoreProduct(id) {
+        await updateDoc(doc(db, "products", id), {
+          active: true,
+          updatedAt: serverTimestamp(),
+        });
+      }
+      async function removeProduct(id) {
+        await deleteDoc(doc(db, "products", id));
+      }
+
+      // ================= Auth =================
+      const loginBtn = document.getElementById("loginBtn");
+      const logoutBtn = document.getElementById("logoutBtn");
+      const adminLoggedOut = document.getElementById("adminLoggedOut");
+      const adminLoggedIn = document.getElementById("adminLoggedIn");
+      const doLoginBtn = document.getElementById("doLogin");
+
+      loginBtn.addEventListener("click", () => {
+        location.hash = "#admin";
+        document.getElementById("admEmail").focus();
+      });
+      logoutBtn.addEventListener("click", async () => {
+        await signOut(auth);
+        alert("Logged out!");
+      });
+      doLoginBtn.addEventListener("click", async () => {
+        const email = document.getElementById("admEmail").value.trim();
+        const pass = document.getElementById("admPass").value.trim();
+        if (!email || !pass) return alert("Enter email and password.");
+        try {
+          await signInWithEmailAndPassword(auth, email, pass);
+        } catch (err) {
+          alert(err.message);
+        }
+      });
+
+      onAuthStateChanged(auth, (user) => {
+        const isInAdmin = location.hash === "#admin";
+        loginBtn.style.display = user ? "none" : "inline-flex";
+        logoutBtn.style.display = user ? "inline-flex" : "none";
+        if (adminLoggedOut)
+          adminLoggedOut.style.display = user ? "none" : "block";
+        if (adminLoggedIn)
+          adminLoggedIn.style.display = user ? "block" : "none";
+        if (isInAdmin) renderAdmin();
+      });
+
+      // ================= Events (catalog + admin) =================
       document.addEventListener("click", (e) => {
         const add = e.target.closest("[data-add]");
-        if (add) addToCart(Number(add.dataset.add));
+        if (add) {
+          addToCart(add.dataset.add);
+        }
         const inc = e.target.closest("[data-inc]");
-        if (inc) changeQty(Number(inc.dataset.inc), +1);
+        if (inc) {
+          changeQty(inc.dataset.inc, +1);
+        }
         const dec = e.target.closest("[data-dec]");
-        if (dec) changeQty(Number(dec.dataset.dec), -1);
+        if (dec) {
+          changeQty(dec.dataset.dec, -1);
+        }
         if (e.target.id === "cartBtn") openDrawer();
         if (e.target.id === "closeDrawer") closeDrawer();
 
@@ -887,6 +1081,20 @@
             top: document.getElementById("produtos").offsetTop - 80,
             behavior: "smooth",
           });
+        }
+
+        const tog = e.target.closest("[data-toggle-sold]");
+        if (tog) {
+          const id = tog.dataset.toggleSold;
+          const prod = state.products.find((p) => p.id === id);
+          if (!prod) return;
+          if (prod.active === false) restoreProduct(id);
+          else markSold(id);
+        }
+        const del = e.target.closest("[data-delete]");
+        if (del) {
+          const id = del.dataset.delete;
+          if (confirm("Delete this product?")) removeProduct(id);
         }
       });
 
@@ -903,7 +1111,6 @@
         document.getElementById("maxPriceValue").textContent = e.target.value;
         renderProdutos();
       });
-
       document.getElementById("newsForm").addEventListener("submit", (e) => {
         e.preventDefault();
         const msg = document.getElementById("newsMsg");
@@ -911,22 +1118,31 @@
         setTimeout(() => (msg.textContent = ""), 3000);
         e.target.reset();
       });
-
       document.getElementById("themeBtn").addEventListener("click", () => {
         state.theme = state.theme === "dark" ? "light" : "dark";
         applyTheme();
       });
-
       document.getElementById("checkout").addEventListener("click", () => {
         if (state.cart.length === 0) return alert("Your cart is empty.");
         alert("Checkout simulation — connect your payment gateway here.");
       });
+      const restoreAllBtn = document.getElementById("restoreAll");
+      if (restoreAllBtn) {
+        restoreAllBtn.addEventListener("click", () => {
+          Promise.all(
+            (state.products || [])
+              .filter((p) => p.active === false)
+              .map((p) => restoreProduct(p.id))
+          );
+        });
+      }
 
-      // --- Init ---
+      // ================= Init =================
       document.getElementById("year").textContent = new Date().getFullYear();
       applyTheme();
       renderProdutos();
       renderCart();
+      route();
     </script>
   </body>
 </html>
